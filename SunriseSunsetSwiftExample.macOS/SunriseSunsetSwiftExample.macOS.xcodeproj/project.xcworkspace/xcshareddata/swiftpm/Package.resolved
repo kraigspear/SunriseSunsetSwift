@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SpearDates",
+        "repositoryURL": "https://github.com/kraigspear/SpearDates",
+        "state": {
+          "branch": null,
+          "revision": "0f49e4bdfafdec9d919b1f96b7d87ff6f5cc8894",
+          "version": "1.1.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
