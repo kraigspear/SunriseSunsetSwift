@@ -13,10 +13,8 @@ import XCTest
 
 final class ContentViewModel: ObservableObject {
 
-    @Published var latitude = ""
-    @Published var longitude = ""
-
-    @Published var errorMessage = ""
+    @Published var latitude = "37.3230"
+    @Published var longitude = "-122.0322"
     @Published var result = ""
 
     init() {
@@ -24,15 +22,19 @@ final class ContentViewModel: ObservableObject {
     }
 
     func calculate() {
-        let lat = Double(latitude)!
-        let lng = Double(longitude)!
+        guard let lat = Double(latitude),
+              let lng = Double(longitude)  else {
+                  result = "Latitude / Longitude should be valid doubles:\nExample: 37.3230 -122.0322 "
+                  return
+              }
+
         let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lng)
         let sunResult = SunriseSunset.calc(date: Date(), coordinate: coordinate)
 
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = .medium
 
-        result = "􀆱 \(dateFormatter.string(from: sunResult.sunrise)) 􀆳 \(dateFormatter.string(from: sunResult.sunset))"
+        result = "􀆱 \(dateFormatter.string(from: sunResult.sunrise)) 􀆳 \(dateFormatter.string(from: sunResult.sunset)) in Local Time Zone"
 
         save()
     }

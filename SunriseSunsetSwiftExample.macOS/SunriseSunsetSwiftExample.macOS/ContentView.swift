@@ -32,6 +32,7 @@ struct ContentView: View {
 
             Text(viewModel.result)
                  .font(.title2)
+                 .multilineTextAlignment(.center)
 
         }.frame(minWidth: 500,minHeight: 500, alignment: .center)
     }
